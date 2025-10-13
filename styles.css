@@ -88,6 +88,7 @@ main h2 {
   color: #887979;
   font-size: 1.2rem;
   margin-top: 0;
+  font-family: 'DM Serif Display', Arial, sans-serif;
 }
 
 main h2 strong {
@@ -157,6 +158,154 @@ ul li {
 
 footer {
     text-align: center;
+}
+
+/* ========== ABOUT PAGE STYLES ========== */
+/* About Header */
+.about-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.about-header h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'DM Serif Display', Arial, sans-serif;
+  color: #b98080;
+}
+
+.about-header p {
+  background-color: #b98080;
+  color: #f2efeb;
+  padding: 25px 30px;
+  border-radius: 8px;
+  max-width: 1000px; 
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.8;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Mission & Vision Section */
+.mission-vision {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  margin: 20px auto;   
+  max-width: 1100px;
+}
+
+.mv-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+}
+
+.mv-item h2 {
+  font-family: 'DM Serif Display', Arial, sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #887979;
+  letter-spacing: 1px;
+}
+
+.mv-box {
+  background-color: #b98080;
+  color: #f2efeb;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  text-align: justify;   
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;   
+  height: 250px;        
+}
+
+.mv-box:hover {
+  transform: translateY(-5px);
+}
+
+.mv-box p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f2efeb;
+}
+
+/* Team Section */
+.team {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fddbdb;
+}
+
+.team h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #b98080;
+  font-family: 'DM Serif Display', Arial, sans-serif;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.member {
+  max-width: 250px;
+  text-align: center;
+}
+
+.member img {
+  width: 100%;
+  max-width: 230px;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.member-info {
+  background-color: #fff;        
+  border: 1px solid #b98080;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-top: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.member-info h4 {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #b98080;
+  font-weight: 700;
+}
+
+.member-info p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #887979;
+  margin: 0;
+}
+
+/* Responsive Design for About Page */
+@media (max-width: 768px) {
+  .mission-vision {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mv-box {
+    width: 85%;
+  }
+
+  .team-members {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
