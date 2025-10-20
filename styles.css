@@ -161,7 +161,6 @@ footer {
 }
 
 /* ========== ABOUT PAGE STYLES ========== */
-/* About Header */
 .about-header {
   text-align: center;
   padding: 40px 20px 20px;
@@ -187,7 +186,6 @@ footer {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Mission & Vision Section */
 .mission-vision {
   display: flex;
   flex-wrap: wrap;
@@ -235,7 +233,6 @@ footer {
   color: #f2efeb;
 }
 
-/* Team Section */
 .team {
   text-align: center;
   padding: 40px 20px;
@@ -291,21 +288,127 @@ footer {
   margin: 0;
 }
 
-/* Responsive Design for About Page */
-@media (max-width: 768px) {
-  .mission-vision {
-    flex-direction: column;
-    align-items: center;
-  }
+/* ========== SKIN GUIDE SECTION ========== */
+.skin-guide-section {
+  background-color: #fddbdb; 
+  padding: 60px 0;
+}
 
-  .mv-box {
-    width: 85%;
-  }
+.skin-guide-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+}
 
-  .team-members {
-    flex-direction: column;
-    gap: 40px;
-  }
+.skin-guide-content {
+  flex: 2;
+  min-width: 300px;
+}
+
+.skin-guide-content h1 {
+  font-size: 2rem;
+  color: #b98080;
+  font-family: 'DM Serif Display', serif;
+  margin-bottom: 15px;
+}
+
+.skin-guide-content h2 {
+  color: #887979;
+  margin-top: 35px;
+  font-size: 1.3rem;
+  font-family: 'DM Serif Display', serif;
+}
+
+.skin-guide-content p {
+  color: #887979;
+  font-size: 0.95rem;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+/* Tables */
+.skin-table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.skin-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  color: #5b4c4c;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.skin-table-container th,
+.skin-table-container td {
+  border: 1px solid #e3c6c6;
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.skin-table-container th {
+  background-color: #b98080;
+  color: #fff;
+  font-weight: bold;
+}
+
+.skin-guide-sidebar {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.skin-card {
+  background-color: #b98080;
+  color: #f2efeb;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover iframe {
+  transform: scale(1.02);
+}
+
+.skin-card a {
+  color: #ffe7e7;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.skin-card a:hover {
+  text-decoration: underline;
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
@@ -328,5 +431,39 @@ footer {
 
   .testimonial {
     width: 85%;
+  }
+}
+
+/* Responsive Design for About Page */
+@media (max-width: 768px) {
+  .mission-vision {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mv-box {
+    width: 85%;
+  }
+
+  .team-members {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+/* Responsive Design for Skin-Guide Page */
+@media (max-width: 900px) {
+  .skin-guide-sidebar {
+    width: 100%;
+    align-items: center;
+    position: static;
+  }
+
+  .skin-card {
+    width: 90%;
+  }
+
+  .video-card iframe {
+    height: 250px;
   }
 }
