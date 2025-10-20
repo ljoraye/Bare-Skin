@@ -508,7 +508,7 @@ footer {
 }
 
 .best-match {
-  background-color: #f7f4f2;
+  background-color: #fddbdb;
   text-align: center;
   padding: 60px 20px;
   color: #887979;
@@ -561,6 +561,180 @@ footer {
   font-weight: 600;
   color: #b98080;
 }
+
+/* ======== CONTACT PAGE STYLES ======== */
+.contact-section {
+  text-align: center;
+  padding: 50px 20px 20px;
+  background-color: #f9dede;
+}
+
+.contact-section h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: #b98080;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row.full input {
+  width: 100%;
+}
+
+.two-column input,
+.two-column textarea,
+.select-wrapper select {
+  flex: 1;
+}
+
+input,
+select,
+textarea {
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  font-size: 14px;
+  background-color: #fff;
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+  height: 120px;
+}
+
+.submit-btn {
+  background-color: #b98080;
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 10px auto 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #a06767;
+}
+
+.find-us {
+  text-align: center;
+  background-color: #f1d4d4;
+  padding: 40px 0;
+}
+
+.find-us h2 {
+  font-family: 'DM Serif Display', serif;
+  color: #b98080;
+  font-size: 35px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 20px;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-item img:hover {
+  transform: scale(1.1);
+}
+
+.social-item p {
+  font-family: 'Poppins', sans-serif;
+  color: #887979;
+  font-weight: 600;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.contact-info {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.contact-info h3 {
+  font-family: 'DM Serif Display', serif;
+  color: #b98080;
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #887979;
+  margin: 5px 0;
+}
+
+.contact-info a {
+  color: #887979;
+  text-decoration: underline;
+}
+
+/* ======== FOOTER ======== */
+footer {
+  background-color: #f6f3f0; /* same as your other pages */
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #887979;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
   nav li {
