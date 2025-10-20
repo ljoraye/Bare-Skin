@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>Bare Skin</title>
+</head>
+<body>
+    <header>
+    <a href="index.html" class="logo">
+      <img src="Images/Logo.png" alt="Bare Skin Text Logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html"><strong>HOME</strong></a></li>
+        <li><a href="about.html"><strong>ABOUT</strong></a></li>
+        <li><a href="skin-guide.html"><strong>SKIN GUIDE</strong></a></li>
+        <li><a href="recommendation.html"><strong>RECOS</strong></a></li>
+        <li><a href="contact.html"><strong>CONTACT</strong></a></li>
+      </ul>
+    </nav>
+    </header>
+
+    <section class="recommendation-section">
+      <h1>RECOMMENDATIONS</h1>
+        <div class="skin-tabs">
+          <a href="#oily">OILY</a>
+          <a href="#dry">DRY</a>
+          <a href="#combination">COMBINATION</a>
+          <a href="#normal">NORMAL</a>
+        </div>
+
+      <!-- Oily & Dry -->
+      <div class="recommendation-row">
+        <div class="skin-card" id="oily">
+          <img src="Images/Oily_Skin.jpg" alt="Oily Skin">
+          <h2>OILY SKIN</h2>
+          <p><strong>Key Traits:</strong> Shiny, enlarged pores, prone to acne/breakouts</p>
+          <h3>Recommended Routine:</h3>
+          <ul>
+            <li><strong>Cleanser:</strong> Gentle foaming or gel cleanser (oil-control, non-comedogenic)</li>
+            <li><strong>Moisturizer:</strong> Lightweight, oil-free or gel-based moisturizer</li>
+            <li><strong>Sunscreen:</strong> Matte-finish SPF, oil-free formula</li>
+            <li><strong>Weekly Care:</strong> Clay mask once or twice a week to reduce excess oil</li>
+          </ul>
+          <p><strong>Best Ingredients:</strong> Salicylic acid, niacinamide, tea tree, green tea</p>
+          <p><strong>Avoid:</strong> Heavy creams and overly harsh scrubs (they can cause more oil production)</p>
+        </div>
+
+        <div class="skin-card" id="dry">
+          <img src="Images/Dry_Skin.jpg" alt="Dry Skin">
+          <h2>DRY SKIN</h2>
+          <p><strong>Key Traits:</strong> Feels tight, rough, or flaky, sometimes dull-looking</p>
+          <h3>Recommended Routine:</h3>
+          <ul>
+            <li><strong>Cleanser:</strong> Hydrating cream or milk cleanser (avoid foaming ones)</li>
+            <li><strong>Moisturizer:</strong> Rich, nourishing moisturizer with ceramides or shea butter</li>
+            <li><strong>Sunscreen:</strong> Hydrating SPF with moisturizing base</li>
+            <li><strong>Weekly Care:</strong> Gentle exfoliation (enzyme-based or mild AHA) + hydrating mask</li>
+          </ul>
+          <p><strong>Best Ingredients:</strong> Hyaluronic acid, glycerin, ceramides, squalane</p>
+          <p><strong>Avoid:</strong> Alcohol-based toners, strong foaming cleansers</p>
+        </div>
+      </div>
+
+      <!-- Combination & Normal -->
+      <div class="recommendation-row">
+        <div class="skin-card" id="combination">
+          <img src="Images/Combination_Skin.webp" alt="Combination Skin">
+          <h2>COMBINATION SKIN</h2>
+          <p><strong>Key Traits:</strong> Balanced, smooth, rarely sensitive, minimal issues</p>
+          <h3>Recommended Routine:</h3>
+          <ul>
+            <li><strong>Cleanser:</strong> Gentle foaming or cream cleanser</li>
+            <li><strong>Moisturizer:</strong> Lightweight hydrating moisturizer</li>
+            <li><strong>Sunscreen:</strong> Broad-spectrum SPF for daily protection</li>
+            <li><strong>Weekly Care:</strong> Gentle exfoliation once a week to maintain skin health</li>
+          </ul>
+          <p><strong>Best Ingredients:</strong> Vitamin C, hyaluronic acid, peptides</p>
+          <p><strong>Avoid:</strong> Over-cleansing or using too many harsh actives (can disrupt balance)</p>
+        </div>
+
+        <div class="skin-card" id="normal">
+          <img src="Images/Normal_Skin.jpg" alt="Normal Skin">
+          <h2>NORMAL SKIN</h2>
+          <p><strong>Key Traits:</strong> Oily in the T-zone (forehead, nose, chin) but dry/normal on cheeks</p>
+          <h3>Recommended Routine:</h3>
+          <ul>
+            <li><strong>Cleanser:</strong> Gentle gel cleanser to balance oil and dryness</li>
+            <li><strong>Moisturizer:</strong> Lightweight lotion or gel that hydrates without heaviness</li>
+            <li><strong>Sunscreen:</strong> Non-greasy SPF that won’t clog pores</li>
+            <li><strong>Weekly Care:</strong> Multi-masking (clay mask on T-zone, hydrating mask on cheeks)</li>
+          </ul>
+          <p><strong>Best Ingredients:</strong> Niacinamide, green tea, hyaluronic acid</p>
+          <p><strong>Avoid:</strong> Over-drying acne treatments all over the face</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Match Section -->
+    <section class="best-match">
+      <h2>BARE SKIN, BEST MATCH</h2>
+      <p>Because every skin deserves its perfect match, Bare Skin pairs you with the best brands.</p>
+
+      <div class="brand-container">
+        <a href="https://www.theoriginote.com/" target="_blank" class="brand-card">
+          <img src="Images/TheOriginote.jpeg" alt="The Originote">
+          <h3>THE ORIGINOTE</h3>
+        </a>
+
+        <a href="https://facerepublic.co.kr/" target="_blank" class="brand-card">
+          <img src="Images/FaceRepublic.jpg" alt="Face Republic">
+          <h3>FACE REPUBLIC</h3>
+        </a>
+
+        <a href="https://www.watsons.com.ph/all-brands/b/163158/luxe-organix" target="_blank" class="brand-card">
+          <img src="Images/LuxeOrganix.webp" alt="Luxe Organix">
+          <h3>LUXE ORGANIX</h3>
+        </a>
+
+        <a href="https://www.watsons.com.ph/all-brands/list/157100/fresh" target="_blank" class="brand-card">
+          <img src="Images/Fresh.png" alt="Fresh Skinlab">
+          <h3>FRESH SKINLAB</h3>
+        </a>
+      </div>
+    </section>
+    
+  <footer>
+    <p>&copy; Copyright 2025. All Rights Reserved. Created by Louise Justine Oraye</p>
+  </footer>
+    
+</body>
+</html>
