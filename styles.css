@@ -76,7 +76,7 @@ nav a:hover {
   color: #b98080;
 }
 
-/* ========== MAIN CONTENT ========== */
+/* ========== INDEX PAGE STYLES ========== */
 main {
   background-color: #fddbdb;
   max-width: 100%;
@@ -110,7 +110,6 @@ ul li {
   margin-bottom: 10px;
 }
 
-/* ========== TESTIMONIALS SECTION ========== */
 .testimonials {
   display: flex;
   flex-wrap: wrap;
@@ -288,7 +287,7 @@ footer {
   margin: 0;
 }
 
-/* ========== SKIN GUIDE SECTION ========== */
+/* ========== SKIN GUIDE PAGE STYLES ========== */
 .skin-guide-section {
   background-color: #fddbdb; 
   padding: 60px 0;
@@ -411,6 +410,157 @@ footer {
   text-decoration: underline;
 }
 
+/* =================== RECOMMENDATION PAGE STYLES =================== */
+.recommendation-section {
+  background-color: #f2efeb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.recommendation-section h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 5rem;
+  color: #b98080;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.skin-card ul li {
+  color: #f2efeb;
+}
+
+.skin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.skin-tabs a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #887979;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.skin-tabs a:hover {
+  color: #887979;
+}
+
+.recommendation-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.skin-card {
+  background-color: #b98080;
+  color: #f2efeb;
+  border-radius: 10px;
+  max-width: 450px;
+  padding: 25px;
+  text-align: left;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.skin-card:hover {
+  transform: translateY(-5px);
+}
+
+.skin-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.skin-card h2 {
+  font-family: 'DM Serif Display', serif;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.skin-card h3 {
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #f2efeb;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.skin-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.skin-card p, .skin-card li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.best-match {
+  background-color: #f7f4f2;
+  text-align: center;
+  padding: 60px 20px;
+  color: #887979;
+}
+
+.best-match h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  color: #b98080;
+  margin-bottom: 10px;
+}
+
+.best-match p {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #887979;
+  font-size: 1rem;
+}
+
+.brand-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.brand-card {
+  text-decoration: none;
+  color: #887979;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.brand-card:hover img {
+  transform: scale(1.05);
+}
+
+.brand-card h3 {
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #b98080;
+}
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
   nav li {
@@ -465,5 +615,16 @@ footer {
 
   .video-card iframe {
     height: 250px;
+  }
+}
+
+/* Responsive Design for Recommendation Page */
+@media (max-width: 900px) {
+  .recommendation-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .skin-card {
+    width: 90%;
   }
 }
