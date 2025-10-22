@@ -13,29 +13,41 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 50px;
-  z-index: 100;
+  padding: 10px 5%;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; 
 }
+
 header .logo img {
-  width: 180px;
+  width: 150px;
   height: auto;
+  max-width: 100%;
 }
+
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 30px;
+  gap: 20px;
 }
+
 nav li {
   display: inline;
 }
+
 nav a {
   text-decoration: none;
   color: #887979;
   font-weight: 600;
   letter-spacing: 1px;
   transition: color 0.3s ease;
+  font-size: 0.9rem;
+  white-space: nowrap; 
 }
 nav a:hover {
   color: #b98080;
@@ -70,7 +82,7 @@ nav a:hover {
 
 /* ========== INDEX PAGE STYLES ========== */
 main {
-  background-color: #fddbdb;
+  background-color: #fae1e1;
   max-width: 100%;
   margin: 0 auto;
   padding: 50px 20px;
@@ -752,8 +764,7 @@ footer p {
   margin: 0;
 }
 
-/* ========== VIEWPORTS ========== */
-/* Hamburger Menu Style for Mobile */
+/* ========== HAMBURGER MENU ========== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -770,13 +781,16 @@ footer p {
   transition: all 0.3s ease;
 }
 
-/* MEDIA QUERY FOR MOBILE VIEWPORT */
+/* ========== MEDIA QUERIES ========== */
+
+/* Mobile: 768px and below */
 @media (max-width: 768px) {
   header {
     justify-content: center;
     position: relative;
     padding: 10px 0;
   }
+  
   .hamburger {
     display: flex;
     position: absolute;
@@ -784,14 +798,17 @@ footer p {
     top: 50%;
     transform: translateY(-50%);
   }
+  
   header .logo {
     text-align: center;
   }
+  
   header .logo img {
     width: 150px;
     display: block;
     margin: 0 auto;
   }
+  
   nav {
     position: absolute;
     top: 110px;
@@ -805,23 +822,26 @@ footer p {
     opacity: 0;
     transition: all 0.4s ease-in-out;
   }
+  
   nav.active {
     display: block;
     max-height: 400px;
     opacity: 1;
   }
+  
   nav ul {
     flex-direction: column;
     gap: 0;
     padding: 20px 0;
   }
+  
   nav li {
     margin: 10px 0;
     display: block;
   }
 
-  /* --- Recommendation Page Adjustment --- */
-   .recommendation-section h1 {
+  /* Recommendation Page */
+  .recommendation-section h1 {
     font-size: 2.2rem;
     text-align: center;
     margin: 0 auto 20px;
@@ -868,45 +888,111 @@ footer p {
     align-items: center;
     justify-content: center;
   }
+  
   .member {
     margin: 0 auto;
   }
 
-  /* --- Contact Page Adjustment --- */
+  /* Contact Page */
   .form-row {
     flex-direction: column;
     gap: 15px;
     width: 75%;
   }
+  
   .social-container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
   }
+  
   .social-item img {
     width: 80px;
     height: 80px;
   }
+  
   .contact-info {
     text-align: center;
   }
+  
   .contact-info h3 {
     font-size: 1.8rem;
     text-align: center;
   }
+  
   .contact-info p,
   .contact-info a {
     text-align: center;
   }
+  
   .contact-section h1 {
     font-size: 1.4rem;
   }
+  
   footer p {
     font-size: 12px;
     padding: 5px 10px;
   }
+
+  /* Index Page */
+  nav li {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  #hero::after {
+    font-size: 1.5rem;
+    top: 45%;
+    left: 8%;
+  }
+  
+  .testimonials {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .testimonial {
+    width: 85%;
+  }
+
+  /* About Page */
+  .mission-vision {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mv-box {
+    width: 85%;
+  }
+  
+  .team-members {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
+/* Small Mobile: 440px and below */
+@media (max-width: 440px) {
+  #hero img {
+    display: none;
+  }
+  
+  nav {
+    position: absolute;
+    top: 87px;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+  }
+}
+
+/* Very Small Mobile: 430px and below */
 @media (max-width: 430px) {
   .skin-card {
     width: 95%;
@@ -922,40 +1008,49 @@ footer p {
   }
 }
 
-/*MEDIA QUERY FOR TABLET VIEWPORT*/
-@media (min-width: 760px) and (max-width: 1024px) {
+/* Tablet: 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
   body {
     font-size: 0.95rem;
     line-height: 1.6;
   }
+  
   header {
     padding: 15px 40px;
   }
+  
   header .logo img {
     width: 180px;
   }
+  
   nav ul {
     gap: 25px;
   }
+  
   nav li a {
     font-size: 1rem;
   }
+  
   #hero img {
     width: 100%;
     height: auto;
   }
+  
   main {
     padding: 0 40px;
   }
+  
   .tablet-desktop h2 {
     font-size: 1.8rem;
     text-align: left;
     margin-bottom: 15px;
   }
+  
   .tablet-desktop p,
   .tablet-desktop ul li {
     font-size: 1rem;
   }
+  
   .testimonials {
     display: flex;
     flex-wrap: wrap;
@@ -963,6 +1058,7 @@ footer p {
     gap: 25px;
     padding: 20px 0;
   }
+  
   .testimonial {
     width: 45%;
     font-size: 0.95rem;
@@ -997,8 +1093,8 @@ footer p {
   }
 }
 
-/* For larger tablets like iPad Air */
-@media (min-width: 820px) and (max-width: 1180px) {
+/* Large Tablets: 821px to 1180px */
+@media (min-width: 821px) and (max-width: 1180px) {
   .team-members {
     gap: 30px;
     padding-bottom: 40px;
@@ -1014,93 +1110,39 @@ footer p {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1180px) {
-  footer {
-    position: relative;
-    z-index: 1;
-    margin-top: 0;
-    clear: both;
-  }
-}
-
-/* Responsive Design for Index Page */
-@media (max-width: 768px) {
-  nav li {
-    display: block;
-    margin: 10px 0;
-  }
-  #hero::after {
-    font-size: 1.5rem;
-    top: 45%;
-    left: 8%;
-  }
-  .testimonials {
-    flex-direction: column;
-    align-items: center;
-  }
-  .testimonial {
-    width: 85%;
-  }
-}
-
-/* Hides Hero Image and Fix the Nav Position in Mobile Devices*/
-@media (max-width: 440px) {
-  #hero img {
-    display: none;
-  }
-  nav {
-    position: absolute;
-    top: 87px;
-    right: 0;
-    width: 100%;
-    background-color: #fff;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: all 0.4s ease-in-out;
-  }
-}
-
-/* Responsive Design for About Page */
-@media (max-width: 768px) {
-  .mission-vision {
-    flex-direction: column;
-    align-items: center;
-  }
-  .mv-box {
-    width: 85%;
-  }
-  .team-members {
-    flex-direction: column;
-    gap: 40px;
-  }
-}
-
-/* Responsive Design for Skin-Guide Page */
+/* Skin Guide & Recommendation Pages: 900px and below */
 @media (max-width: 900px) {
   .skin-guide-sidebar {
     width: 100%;
     align-items: center;
     position: static;
   }
+  
   .skin-card {
     width: 90%;
   }
+  
   .video-card iframe {
     height: 250px;
   }
-}
-
-/* Responsive Design for Recommendation Page */
-@media (max-width: 900px) {
+  
   .recommendation-row {
     flex-direction: column;
     align-items: center;
   }
-  .skin-card {
-    width: 90%;
-  }
 }
 
+/* Print Styles */
+@media print {
+  body {
+    background-color: #f2efeb;
+    color: #f2efeb;
+  }
+  
+  .print-block {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+}
