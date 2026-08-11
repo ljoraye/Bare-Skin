@@ -1,0 +1,245 @@
+import 'package:flutter/material.dart';
+import 'monster.dart';
+import 'seed.dart';
+
+/// Module 5 - Activity 5 - HAUDEX app (course capstone)
+class DexApp extends StatefulWidget {
+  const DexApp({super.key});
+  @override
+  State<DexApp> createState() => _DexAppState();
+}
+
+class _DexAppState extends State<DexApp> {
+  final List<Monster> _monsters = List.of(seedMonsters);
+
+  Future<void> _addMonster() async {
+    final result = await showDialog<Monster>(
+      context: context,
+      builder: (context) => const _AddMonsterDialog(),
+    );
+    if (result == null) return;
+    setState(() => _monsters.add(result));
+  }
+
+  void _openDetail(int index) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => _MonsterDetailScreen(
+          monster: _monsters[index],
+          onUpdate: (updated) => setState(() => _monsters[index] = updated),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('HAUDEX')),
+      body: ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        itemCount: _monsters.length,
+        separatorBuilder: (_, __) => const Divider(height: 1),
+        itemBuilder: (context, index) {
+          final monster = _monsters[index];
+          final fainted = monster.hp <= 0;
+          return ListTile(
+            leading: CircleAvatar(
+              backgroundColor: _typeColor(monster.type).withOpacity(0.15),
+              child: Text(
+                monster.name.isNotEmpty ? monster.name[0].toUpperCase() : '?',
+                style: TextStyle(
+                  color: _typeColor(monster.type),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            title: Text(monster.name),
+            subtitle: Text(
+              '${monster.type} · HP ${monster.hp}/${monster.maxHp}'
+              '${fainted ? ' · Fainted' : ''}',
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _openDetail(index),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addMonster,
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+Color _typeColor(String type) {
+  switch (type) {
+    case 'fire':
+      return Colors.deepOrange;
+    case 'water':
+      return Colors.blue;
+    case 'grass':
+      return Colors.green;
+    default:
+      return Colors.blueGrey;
+  }
+}
+
+class _AddMonsterDialog extends StatefulWidget {
+  const _AddMonsterDialog();
+
+  @override
+  State<_AddMonsterDialog> createState() => _AddMonsterDialogState();
+}
+
+class _AddMonsterDialogState extends State<_AddMonsterDialog> {
+  final _nameController = TextEditingController();
+  String _type = 'fire';
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    final name = _nameController.text.trim();
+    if (name.isEmpty) return;
+    Navigator.of(context).pop(
+      Monster(name: name, type: _type, hp: 30, maxHp: 30),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('New Monster'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: _nameController,
+            autofocus: true,
+            decoration: const InputDecoration(labelText: 'Name'),
+            onSubmitted: (_) => _submit(),
+          ),
+          const SizedBox(height: 12),
+          DropdownButtonFormField<String>(
+            initialValue: _type,
+            decoration: const InputDecoration(labelText: 'Type'),
+            items: const [
+              DropdownMenuItem(value: 'fire', child: Text('Fire')),
+              DropdownMenuItem(value: 'water', child: Text('Water')),
+              DropdownMenuItem(value: 'grass', child: Text('Grass')),
+            ],
+            onChanged: (value) => setState(() => _type = value ?? _type),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(onPressed: _submit, child: const Text('Add')),
+      ],
+    );
+  }
+}
+
+class _MonsterDetailScreen extends StatefulWidget {
+  const _MonsterDetailScreen({required this.monster, required this.onUpdate});
+
+  final Monster monster;
+  final ValueChanged<Monster> onUpdate;
+
+  @override
+  State<_MonsterDetailScreen> createState() => _MonsterDetailScreenState();
+}
+
+class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
+  late Monster _monster = widget.monster;
+  String? _feedback;
+
+  void _attack() {
+    if (_monster.hp <= 0) return;
+    const damage = 12;
+    final newHp = (_monster.hp - damage).clamp(0, _monster.maxHp);
+    setState(() {
+      _monster = Monster(
+        name: _monster.name,
+        type: _monster.type,
+        hp: newHp,
+        maxHp: _monster.maxHp,
+      );
+      _feedback = newHp == 0
+          ? '${_monster.name} fainted!'
+          : '${_monster.name} took $damage damage!';
+    });
+    widget.onUpdate(_monster);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final fainted = _monster.hp <= 0;
+    final fraction = _monster.maxHp == 0 ? 0.0 : _monster.hp / _monster.maxHp;
+
+    return Scaffold(
+      appBar: AppBar(title: Text(_monster.name)),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              _monster.type,
+              key: const Key('detailType'),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                const Text('HP: '),
+                Text(
+                  '${_monster.hp}',
+                  key: const Key('hp'),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(' / ${_monster.maxHp}'),
+              ],
+            ),
+            const SizedBox(height: 8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: LinearProgressIndicator(
+                value: fraction,
+                minHeight: 10,
+                backgroundColor: Colors.grey.shade300,
+                valueColor: AlwaysStoppedAnimation(
+                  fraction <= 0.2 ? Colors.red : Colors.green,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            if (_feedback != null)
+              Text(
+                _feedback!,
+                style: TextStyle(
+                  color: fainted ? Colors.grey : Colors.red,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: fainted ? null : _attack,
+                child: const Text('Attack'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
