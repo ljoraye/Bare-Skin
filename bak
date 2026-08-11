@@ -3,11 +3,6 @@ import 'monster.dart';
 import 'seed.dart';
 
 /// Module 5 - Activity 5 - HAUDEX app (course capstone)
-
-// ADDED: one shared background color used on both screens, so the app has a
-// consistent off-white feel instead of the default stark white.
-const _kBackground = Color(0xFFF6F6F9);
-
 class DexApp extends StatefulWidget {
   const DexApp({super.key});
   @override
@@ -40,19 +35,15 @@ class _DexAppState extends State<DexApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ADDED: soft background instead of default white
-      backgroundColor: _kBackground,
+      // ADDED: light grey background instead of default white
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        // ADDED: bigger, bolder title with letter spacing for a title feel
         title: const Text(
           'HAUDEX',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 0.5,
-          ),
+          // ADDED: bolder title with a bit of letter spacing
+          style: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.5),
         ),
-        backgroundColor: _kBackground,
+        backgroundColor: Colors.grey.shade100,
         elevation: 0,
         foregroundColor: Colors.black87,
       ),
@@ -64,8 +55,7 @@ class _DexAppState extends State<DexApp> {
           final monster = _monsters[index];
           final fainted = monster.hp <= 0;
           return Container(
-            // ADDED: white card background behind each row so rows stand
-            // out against the new grey page background
+            // ADDED: white row background + colored left border for type
             color: Colors.white,
             decoration: BoxDecoration(
               border: Border(
@@ -87,17 +77,12 @@ class _DexAppState extends State<DexApp> {
               ),
               title: Text(
                 monster.name,
-                // ADDED: bolder, slightly larger name for a clearer heading
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                ),
+                // ADDED: bolder monster name
+                style: const TextStyle(fontWeight: FontWeight.w700),
               ),
               subtitle: Text(
                 '${monster.type} · HP ${monster.hp}/${monster.maxHp}'
                 '${fainted ? ' · Fainted' : ''}',
-                // ADDED: softer grey subtitle so it reads as secondary text
-                style: TextStyle(color: Colors.grey.shade600),
               ),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => _openDetail(index),
@@ -154,38 +139,20 @@ class _AddMonsterDialogState extends State<_AddMonsterDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      // ADDED: rounded dialog shape instead of the default sharp corners
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      title: const Text(
-        'New Monster',
-        style: TextStyle(fontWeight: FontWeight.w700),
-      ),
+      title: const Text('New Monster'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: _nameController,
             autofocus: true,
-            decoration: InputDecoration(
-              labelText: 'Name',
-              // ADDED: rounded outlined field to match the rest of the app
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            decoration: const InputDecoration(labelText: 'Name'),
             onSubmitted: (_) => _submit(),
           ),
           const SizedBox(height: 12),
           DropdownButtonFormField<String>(
             initialValue: _type,
-            decoration: InputDecoration(
-              labelText: 'Type',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            decoration: const InputDecoration(labelText: 'Type'),
             items: const [
               DropdownMenuItem(value: 'fire', child: Text('Fire')),
               DropdownMenuItem(value: 'water', child: Text('Water')),
@@ -222,7 +189,7 @@ class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
 
   void _attack() {
     if (_monster.hp <= 0) return;
-    // CHANGED: 15 damage per attack to match the M5A1 contract
+    // CHANGED: 15 damage per attack, matching the M5A1 contract
     const damage = 15;
     final newHp = (_monster.hp - damage).clamp(0, _monster.maxHp);
     setState(() {
@@ -246,12 +213,11 @@ class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
     final accent = _typeColor(_monster.type);
 
     return Scaffold(
-      // ADDED: same shared background color as the list screen
-      backgroundColor: _kBackground,
+      // ADDED: same light grey background as the list screen
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         title: Text(
           _monster.name,
-          // ADDED: bolder app bar title to match the list screen
           style: const TextStyle(fontWeight: FontWeight.w800),
         ),
         backgroundColor: accent.withOpacity(0.15),
@@ -266,64 +232,47 @@ class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
             Text(
               _monster.type,
               key: const Key('detailType'),
-              // ADDED: uppercase type label with letter spacing, a common
-              // "tag" typography treatment
               style: TextStyle(
                 color: accent,
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-                letterSpacing: 1.2,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
               ),
             ),
             const SizedBox(height: 16),
-            // ADDED: HP block wrapped in a white card so it stands out
-            // against the grey page background, with clearer size hierarchy
+            // ADDED: HP block on a white card so it stands out from the grey
+            // page background
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
                     children: [
-                      const Text(
-                        'HP',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
+                      const Text('HP: '),
                       Text(
                         '${_monster.hp}',
                         key: const Key('hp'),
-                        // ADDED: much larger HP number for a clear focal
-                        // point, instead of the same size as the label text
+                        // ADDED: larger HP number so it stands out
                         style: const TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 28,
+                          fontSize: 22,
                         ),
                       ),
-                      Text(
-                        ' / ${_monster.maxHp}',
-                        style: TextStyle(color: Colors.grey.shade600),
-                      ),
+                      Text(' / ${_monster.maxHp}'),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: LinearProgressIndicator(
                       value: fraction,
                       minHeight: 10,
-                      backgroundColor: Colors.grey.shade200,
+                      backgroundColor: Colors.grey.shade300,
                       valueColor: AlwaysStoppedAnimation(
                         fraction <= 0.2 ? Colors.red : Colors.green,
                       ),
@@ -349,16 +298,6 @@ class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: fainted ? null : accent,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  // ADDED: rounded button shape to match the rest of the app
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  // ADDED: bolder, slightly larger label text
-                  textStyle: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                  ),
                 ),
                 child: const Text('Attack'),
               ),
@@ -367,3 +306,5 @@ class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
         ),
       ),
     );
+  }
+}
