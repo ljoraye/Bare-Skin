@@ -222,7 +222,8 @@ class _MonsterDetailScreenState extends State<_MonsterDetailScreen> {
 
   void _attack() {
     if (_monster.hp <= 0) return;
-    const damage = 12;
+    // CHANGED: 15 damage per attack to match the M5A1 contract
+    const damage = 15;
     final newHp = (_monster.hp - damage).clamp(0, _monster.maxHp);
     setState(() {
       _monster = Monster(
