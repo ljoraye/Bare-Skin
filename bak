@@ -56,8 +56,10 @@ class _DexAppState extends State<DexApp> {
           final fainted = monster.hp <= 0;
           return Container(
             // ADDED: white row background + colored left border for type
-            color: Colors.white,
+            // (color lives inside the BoxDecoration, since Container can't
+            // take both `color` and `decoration` at the same time)
             decoration: BoxDecoration(
+              color: Colors.white,
               border: Border(
                 left: BorderSide(color: _typeColor(monster.type), width: 4),
               ),
